@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ghy-e4-F0V">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--単語リスト-->
+        <scene sceneID="rDf-eL-zPx">
+            <objects>
+                <tableViewController id="hQt-Dm-FQG" customClass="TodosViewController" customModule="iOSTodos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vPQ-Eo-7XW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Qth-gy-X76">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qth-gy-X76" id="hDm-9x-PoV">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="UTv-gE-KEh" kind="show" identifier="edit" id="ZQC-Bc-et2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="hQt-Dm-FQG" id="qsV-Zm-5AJ"/>
+                            <outlet property="delegate" destination="hQt-Dm-FQG" id="w8b-sj-Mdu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="単語リスト" id="4ep-gR-vy3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rot-ZI-llG">
+                            <connections>
+                                <segue destination="UTv-gE-KEh" kind="show" identifier="" id="0Wc-T8-og4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7ME-Fe-1GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055" y="141"/>
+        </scene>
+        <!--単語検索-->
+        <scene sceneID="qoc-HH-1oi">
+            <objects>
+                <viewController id="UTv-gE-KEh" customClass="TodoDetailViewController" customModule="iOSTodos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z4F-GA-Zun"/>
+                        <viewControllerLayoutGuide type="bottom" id="9i3-Kc-Zd3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2dI-AQ-fL4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bV9-pQ-mOT">
+                                <rect key="frame" x="0.0" y="-49" width="375" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UTv-gE-KEh" id="fXz-8i-tOh"/>
+                                </connections>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Og-o5-6SR">
+                                <rect key="frame" x="307" y="102" width="68" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SafeMode:" destination="UTv-gE-KEh" eventType="touchUpInside" id="aBy-0d-boF"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder=" 単語、熟語を検索" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rqb-t3-I9h">
+                                <rect key="frame" x="0.0" y="64" width="375" height="38"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <connections>
+                                    <action selector="tapTextField:" destination="UTv-gE-KEh" eventType="editingDidEndOnExit" id="TaW-Zz-Kbs"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="単語検索" id="YQl-X0-NhY">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zmp-VL-Vlr">
+                            <connections>
+                                <action selector="cancel:" destination="UTv-gE-KEh" id="133-qb-MTb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="wIg-5Z-SeS">
+                            <connections>
+                                <action selector="save:" destination="UTv-gE-KEh" id="QLs-09-5xJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="textField" destination="Rqb-t3-I9h" id="a3q-2Y-v8v"/>
+                        <outlet property="webView" destination="bV9-pQ-mOT" id="ikf-VK-XCU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeY-By-7cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1653.5" y="158.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qiS-3q-F75">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ghy-e4-F0V" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BMC-oc-3df">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hQt-Dm-FQG" kind="relationship" relationship="rootViewController" id="iMx-Hf-T4H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2oY-zz-7NX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="243" y="141"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZQC-Bc-et2"/>
+    </inferredMetricsTieBreakers>
+</document>
